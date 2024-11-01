@@ -1,6 +1,18 @@
+'use client'
 import Link from 'next/link';
+import { useUserStore } from '../store/useUserStore';
+import { useRouter } from 'next/navigation';
+
 
 export default function Navbar() {
+  const { user, clearUser } = useUserStore(); // Access user state and clearUser action
+  const router = useRouter();
+
+  const handleLogout = () => {
+    clearUser(); // Clear user data in Zustand and local storage
+    router.push('/login'); // Redirect to login page or home
+  };
+
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -13,6 +25,14 @@ export default function Navbar() {
               Home
             </Link>
           </li>
+          { user ? (
+            <>
+            <li>
+                <button className="text-gray-300 hover:text-white transition duration-300" onClick={handleLogout}>Logout</button>
+            </li>
+            </>
+          ) : (
+            <>
           <li>
             <Link href="/auth/register" className="text-gray-300 hover:text-white transition duration-300">
               Register
@@ -23,6 +43,8 @@ export default function Navbar() {
               Login
             </Link>
           </li>
+          </>
+          )}
         </ul>
       </div>
     </nav>

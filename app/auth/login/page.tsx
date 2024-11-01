@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
+import { useUserStore } from '../../store/useUserStore'; // Adjust the path if needed
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(""); // Track error message
   const router = useRouter();
+  const { setUser } = useUserStore(); // Access setUser from Zustand
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ export default function Login() {
       if( res.ok ){   // login successful
         const data = await res.json();
         console.log("Login Successful:", data);
+        setUser(data.user); // Update Zustand store with user data, automatically saving it to local storage
         router.push('/'); // redirect to homepage
       }else{
         const data = await res.json();

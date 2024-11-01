@@ -36,7 +36,7 @@ export async function POST( request: Request){
               message: 'Login successful!',
               user: {
                 id: user._id,
-                username: user.name,
+                name: user.name,
                 email: user.email,
               },
             },
