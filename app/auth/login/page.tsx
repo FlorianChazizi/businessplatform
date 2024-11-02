@@ -3,51 +3,25 @@
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import { useUserStore } from '../../store/useUserStore'; // Adjust the path if needed
+import { useLogin } from '../../api/hooks/useLogin';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(""); // Track error message
   const router = useRouter();
   const { setUser } = useUserStore(); // Access setUser from Zustand
+  const { handleLogin, error } = useLogin();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          password
-        }), 
-      });
-
-      if( res.ok ){   // login successful
-        const data = await res.json();
-        console.log("Login Successful:", data);
-        setUser(data.user); // Update Zustand store with user data, automatically saving it to local storage
-        router.push('/'); // redirect to homepage
-      }else{
-        const data = await res.json();
-          setError(data.error); // Display error message
-      }
-      
-    } catch (error) {
-      setError(' Something went wrong. Please try again later. ')
-    }
-
-
-    console.log('User logged in:', { email, password });
+    handleLogin({ email, password });
   };
-
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
       <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={onSubmit} className="space-y-6">
            {/* Show Error Message */}
         {error && (
           <div className="bg-red-500 text-white p-4 rounded mb-4 text-center">

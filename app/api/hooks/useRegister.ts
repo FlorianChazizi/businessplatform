@@ -1,11 +1,13 @@
 // hooks/useRegister.ts
 
 import { useState } from 'react';
+
 interface RegisterData {
   name: string;
   email: string;
   password: string;
 }
+
 export function useRegister() {
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
