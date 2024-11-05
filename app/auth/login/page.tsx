@@ -18,9 +18,9 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-600">
       <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-lg rounded-lg">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+        <h2 className="text-center text-2xl font-semibold text-gray-800">Sign in to your account</h2>
         <form onSubmit={onSubmit} className="space-y-6">
            {/* Show Error Message */}
         {error && (
@@ -57,7 +57,7 @@ export default function Login() {
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               Sign In
             </button>
