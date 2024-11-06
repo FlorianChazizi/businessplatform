@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import { BuildingStorefrontIcon, WrenchScrewdriverIcon, BanknotesIcon, CakeIcon, ScissorsIcon, HeartIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 
 function HeroSection() {
     return (
@@ -63,9 +64,9 @@ function HeroSection() {
                         Get your business listed on our platform and reach local customers
                         easily.
                     </p>
-                    <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    <Link href='/business/registrationform' className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                         Register Now
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

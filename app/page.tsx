@@ -2,6 +2,7 @@
 import { Metadata } from "next";
 import { useUserStore } from "./store/useUserStore";
 import HeroSection from "./components/HeroSection";
+import Maps from "./components/Maps";
 
 // export const metadata: Metadata = {
 //   title: 'Next Auth',
@@ -14,7 +15,7 @@ export default function Home() {
   return (
     <div className="">
       <HeroSection />
-      
+      <Maps />
     </div>
   );
 } 
