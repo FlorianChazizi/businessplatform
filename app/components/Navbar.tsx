@@ -14,36 +14,39 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-blue-600 p-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-blue-500 p-4 relative">
+      <div className="container mx-auto flex items-center justify-between relative">
+        {/* Logo on the left */}
         <Link href="/" className="text-white text-2xl font-bold">
           Next Auth
         </Link>
-        <ul className="flex space-x-6">
-          <li>
-            <Link href="/" className="text-gray-300 hover:text-white transition duration-300">
+        
+        {/* Centered Navigation Links */}
+        <ul className="absolute left-1/2 transform -translate-x-1/2 flex space-x-6">
+          <li className=''>
+            <Link href="/" className="text-lg text-white  font-bold drop-shadow transition duration-500 p-3 rounded-md hover:bg-white hover:text-blue-500">
               Home
             </Link>
           </li>
           { user ? (
-            <>
             <li>
-                <button className="text-gray-300 hover:text-white transition duration-300" onClick={handleLogout}>Logout</button>
+              <Link href='/' className="text-lg text-white  font-bold drop-shadow transition duration-500 p-3 rounded-md hover:bg-white hover:text-blue-500" onClick={handleLogout}>
+                Logout
+              </Link>
             </li>
-            </>
           ) : (
             <>
-          <li>
-            <Link href="/auth/register" className="text-gray-300 hover:text-white transition duration-300">
-              Register
-            </Link>
-          </li>
-          <li>
-            <Link href="/auth/login" className="text-gray-300 hover:text-white transition duration-300">
-              Login
-            </Link>
-          </li>
-          </>
+              <li>
+                <Link href="/auth/register" className="text-lg text-white  font-bold drop-shadow transition duration-500 p-3 rounded-md hover:bg-white hover:text-blue-500">
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link href="/auth/login" className="text-lg text-white  font-bold drop-shadow transition duration-500 p-3 rounded-md hover:bg-white hover:text-blue-500">
+                  Login
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </div>

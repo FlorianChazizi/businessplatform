@@ -27,7 +27,7 @@ export default function Register() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-600">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
       <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-center text-2xl font-semibold text-gray-800">Create an account</h2>
         <form onSubmit={onSubmit} className="space-y-6">
