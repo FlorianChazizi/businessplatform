@@ -34,7 +34,7 @@ function BusinessRegistrationForm() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-600 flex items-center justify-center">
+    <div className="min-h-screen bg-blue-500 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
         <h2 className="text-2xl font-semibold text-center mb-6">Register Your Business</h2>
         <form onSubmit={handleSubmit}>

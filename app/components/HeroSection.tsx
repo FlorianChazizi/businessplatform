@@ -68,7 +68,7 @@ function HeroSection() {
                         Get your business listed on our platform and reach local customers
                         easily.
                     </p>
-                    <Link href='/business/registrationform' className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    <Link href='/business/registrationform' className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                         Register Now
                     </Link>
                 </div>
