@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between relative">
         {/* Logo on the left */}
         <Link href="/" className="text-white text-2xl font-bold">
-          Next Auth
+          <h1>Next Auth</h1>
         </Link>
         
         {/* Centered Navigation Links */}

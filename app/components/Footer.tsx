@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="container mx-auto px-4">
           {/* Brand Section */}
           <div className="mb-4 sm:mb-0">
-            <h1 className="text-2xl font-bold">Business Index</h1>
+            <span className="text-2xl font-bold">Business Index</span>
           </div>
 
           {/* Navigation Links */}
