@@ -10,7 +10,7 @@ const BusinessSchema = new Schema(
     postalCode: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     email: { type: String, required: true },
-    website: { type: String },
+    website: { type: String, required: false },
   },
   { timestamps: true }
 );

@@ -2,7 +2,7 @@
 import React from 'react';
 import { BuildingStorefrontIcon, WrenchScrewdriverIcon, BanknotesIcon, CakeIcon, ScissorsIcon, HeartIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-
+import CityRegistration from './CityRegistration';
 function HeroSection() {
     return (
         <div className="h-screen w-full bg-blue-500 flex items-center justify-center">

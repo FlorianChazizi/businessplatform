@@ -1,13 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb'; // Assumes you have a MongoDB connection utility
 import Business from '@/models/Business'; // Assumes you have a Mongoose model for the Business schema
 
 // Define the API handler
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   await connectToDatabase(); // Ensure database connection
 
   if (req.method === 'POST') {
     try {
+      const body = await req.json();
       const {
         businessName,
         category,
@@ -18,8 +19,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         phoneNumber,
         email,
         website,
-      } = req.body;
-
+      } = body;
+console.log(` Name: ${businessName}`);
       // Validate input
       if (
         !businessName ||
@@ -31,7 +32,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         !phoneNumber ||
         !email
       ) {
-        return res.status(400).json({ message: 'Missing required fields' });
+        return NextResponse.json(
+          { message: 'Missing required fields.'},
+          { status: 400 }
+        )
       }
 
       // Create a new business entry
@@ -47,12 +51,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         website,
       });
 
-      return res.status(201).json({ message: 'Business registered successfully', business: newBusiness });
+      return NextResponse.json(
+        { message: 'Business registered successfully', business: newBusiness },
+        { status: 201}
+      )
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Internal server error', error: error.message });
+      return NextResponse.json(
+        { message: 'Allowed methods: Post' },
+        { status: 200, headers: { Allow: 'POST'}}
+      )
     }
-  } else {
-    return res.status(405).json({ message: 'Method not allowed' });
   }
 }

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { useUserStore } from "./store/useUserStore";
 import HeroSection from "./components/HeroSection";
 import Maps from "./components/Maps";
-
+import CityRegistration from '../app/components/CityRegistration';
 // export const metadata: Metadata = {
 //   title: 'Next Auth',
 //   description: 'Track product prices effortlessly and save money on your online shopping.',
@@ -15,6 +15,8 @@ export default function Home() {
   return (
     <div className="">
       <HeroSection />
+      <CityRegistration />
+
       <Maps />
     </div>
   );

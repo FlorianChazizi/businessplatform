@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import { greekCities } from '../data/greekCities';
 
 function BusinessRegistrationForm() {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ function BusinessRegistrationForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
     try {
@@ -31,7 +32,7 @@ function BusinessRegistrationForm() {
       });
   
       if (response.ok) {
-        const data = await response.json(); // This expects valid JSON
+        const data = await response.json(); 
         alert('Business registered successfully!');
         setFormData({
           businessName: '',
@@ -45,7 +46,8 @@ function BusinessRegistrationForm() {
           website: '',
         });
       } else {
-        const errorData = await response.json(); // This will fail if the response isn't valid JSON
+        const errorData = await response.json(); 
+        console.log(`Error is -> ${errorData}`);
         alert(`Error: ${errorData.message}`);
       }
     } catch (error) {
@@ -54,7 +56,7 @@ function BusinessRegistrationForm() {
     }
   };
 
-  
+
   return (
     <div className="min-h-screen bg-blue-500 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -74,6 +76,7 @@ function BusinessRegistrationForm() {
             />
           </div>
           <div className="mb-4">
+
             <input
               type="text"
               name="category"
@@ -107,7 +110,7 @@ function BusinessRegistrationForm() {
               required
             />
           </div>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <input
               type="text"
               name="city"
@@ -117,7 +120,28 @@ function BusinessRegistrationForm() {
               className="p-2 border rounded w-full"
               required
             />
+          </div> */}
+          {/* Dropdown for Greek Cities */}
+          <div className="mb-4">
+            <select
+              id="city"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              className="p-2 border rounded w-full"
+              required
+            >
+              <option value="" disabled>
+                Πόλη
+              </option>
+              {greekCities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
           </div>
+
           <div className="mb-4">
             <input
               type="text"
