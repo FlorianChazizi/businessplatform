@@ -10,7 +10,7 @@ export const categories: {
 }[] = [
   {
     id: 1,
-    name: "Food & Beverages",
+    name: "Food",
     description: "Discover restaurants, cafes, and bakeries.",
     icon: "ShoppingBagIcon",
   },
@@ -28,13 +28,13 @@ export const categories: {
   },
   {
     id: 4,
-    name: "Health & Wellness",
+    name: "Wellness",
     description: "Find gyms, spas, and healthcare services.",
     icon: "HeartIcon",
   },
   {
     id: 5,
-    name: "Professional Services",
+    name: "Services",
     description: "Connect with consultants, accountants, and more.",
     icon: "BriefcaseIcon",
   },

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import '../../styles/loader.css'
 interface Business {
   _id: string;
   businessName: string;
@@ -34,7 +34,9 @@ export default function BusinessDetailsPage({ params }: { params: { id: string }
   }, [id]);
 
   if (!business) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return <div className="min-h-screen flex items-center justify-center">
+      <div className="loader"></div>
+    </div>;
   }
 
   return (

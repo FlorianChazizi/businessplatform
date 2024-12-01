@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import BusinessCard from '@/app/components/BusinessCard';
 import { categories } from '@/app/data/Categories'; // Import the categories data
 import * as HeroIcons from '@heroicons/react/24/solid';
-
+import '../../styles/loader.css';
 interface Business {
     _id: string;
     businessName: string;
@@ -36,6 +36,12 @@ export default function CategoryPage({ params }: { params: { category: string } 
 
         fetchBusinesses();
     }, [category]);
+
+    if (!category) {
+        return <div className="min-h-screen flex items-center justify-center">
+          <div className="loader"></div>
+          </div>
+      }
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
